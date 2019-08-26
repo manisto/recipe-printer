@@ -6,6 +6,8 @@ namespace Recipes.Domain.Models
     {
         public int Id { get; private set; }
         public string Name { get; private set; }
+        public string Preparation { get; set; }
+        public string Ingredients { get; set; }
 
         public ICollection<RecipeCategory> RecipeCategories { get; private set; }
     }
