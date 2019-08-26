@@ -9,7 +9,8 @@ namespace Recipes.Infrastructure.EntityConfigurations
         public void Configure(EntityTypeBuilder<RecipeCategory> builder)
         {
             builder
-                .HasKey(bc => new { CategoryId = bc.Category.Id, RecipeId = bc.Recipe.Id });
+                .HasIndex("RecipeId", "CategoryId")
+                .IsUnique();
 
             builder
                 .HasOne(rc => rc.Recipe)

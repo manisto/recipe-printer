@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Recipes.Domain.Models;
+using Recipes.Infrastructure.EntityConfigurations;
 
 namespace Recipes.Infrastructure
 {
@@ -11,12 +12,12 @@ namespace Recipes.Infrastructure
 
         override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Recipes.db");
+            optionsBuilder.UseSqlite("Data Source=Recipes.sqlite");
         }
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new RecipeCategoryConfiguration());
         }
     }
 }

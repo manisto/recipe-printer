@@ -9,7 +9,8 @@ namespace Recipes.Application.Mappers
         {
             return new RecipeDto
             {
-
+                Id = recipe.Id,
+                Name = recipe.Name,
             };
         }
     }

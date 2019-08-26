@@ -3,7 +3,7 @@ namespace Recipes.Domain.Models
     public class Category
     {
         public int Id { get; private set; }
-        public string Name { get; }
+        public string Name { get; private set; }
 
         #region EF Core
         
