@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Recipes.Application.Dtos;
 using Recipes.Application.Mappers;
 using Recipes.Domain.Models;
 using Recipes.Domain.Repositories;
+using System.Linq;
 
 namespace Recipes.Application.Queries
 {
@@ -19,6 +21,13 @@ namespace Recipes.Application.Queries
         {
             _recipeRepository = recipeRepository;
             _recipeMapper = recipeMapper;
+        }
+
+        public async Task<IEnumerable<CategoryDto>> ListCategoriesAsync()
+        {
+            IEnumerable<Category> categories = await _recipeRepository.ListCategoriesAsync();
+            IEnumerable<CategoryDto> CategoryDtos = categories.Select(category => _recipeMapper.MapCategory(category));
+            return CategoryDtos;
         }
 
         public async Task<RecipeDto> GetRecipeAsync(int recipeId)

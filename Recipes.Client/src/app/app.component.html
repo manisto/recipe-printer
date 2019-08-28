@@ -1,13 +1,10 @@
 <nav>
   <div class="nav flex-column nav-pills p-3">
-    <a class="nav-link active" href="#">Kategorier</a>
-    <a class="nav-link" href="#">Opskrifter</a>
+    <a class="nav-link" routerLink="/categories" routerLinkActive="active">Kategorier</a>
+    <a class="nav-link" routerLink="/recipes" routerLinkActive="active">Opskrifter</a>
   </div>
 </nav>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col">wat</div>
-    <div class="col">wat</div>
-    <div class="col">wat</div>
-  </div>
+  <router-outlet>
+  </router-outlet>
 </div>

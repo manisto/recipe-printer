@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Recipes.Domain.Repositories;
 using Recipes.Domain.Models;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Recipes.Infrastructure.Repositories
 {
@@ -14,6 +16,11 @@ namespace Recipes.Infrastructure.Repositories
         )
         {
             _context = context;
+        }
+
+        public async Task<IEnumerable<Category>> ListCategoriesAsync()
+        {
+            return await _context.Categories.ToListAsync();
         }
 
         public async Task<Recipe> GetRecipeAsync(int recipeId)
