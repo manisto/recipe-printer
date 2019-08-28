@@ -36,6 +36,11 @@ namespace Recipes.Api
             services.AddScoped<IRecipeQueries, RecipeQueries>();
             services.AddScoped<IRecipeMapper, RecipeMapper>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "../Recipes.Client/dist";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,7 +57,16 @@ namespace Recipes.Api
             }
 
             app.UseHttpsRedirection();
+            app.UseSpaStaticFiles();
             app.UseMvc();
+
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                }
+            });
         }
     }
 }
