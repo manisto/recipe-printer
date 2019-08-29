@@ -1,5 +1,5 @@
-import { Category } from "../shared/category.model";
-import { Component, OnInit, Input, ChangeDetectionStrategy } from "@angular/core";
+import { CategoryDto } from "../shared/category-dto.model";
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from "@angular/core";
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -12,7 +12,8 @@ export class CategoryComponent implements OnInit {
   private fb: FormBuilder;
   private form: FormGroup;
 
-  @Input() set category(category: Category) {
+  @Input()
+  set category(category: CategoryDto) {
     if (!category) {
       return;
     }
@@ -23,13 +24,21 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  @Output() canceled = new EventEmitter<void>();
+  @Output() saved = new EventEmitter<CategoryDto>();
+
   constructor(fb: FormBuilder) {
     this.fb = fb;
   }
 
   ngOnInit() { }
 
+  cancel(): void {
+    this.canceled.emit();
+  }
+
   save() {
-    console.log(this.form.value);
+    let returnValue: CategoryDto = Object.assign({}, this.form.value);
+    this.saved.emit(returnValue);
   }
 }

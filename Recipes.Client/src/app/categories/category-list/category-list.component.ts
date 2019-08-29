@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from "../shared/category.service";
-import { Category } from "../shared/category.model";
+import { CategoryDto } from "../shared/category-dto.model";
 import { Observable } from "rxjs";
 
 @Component({
@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 })
 export class CategoryListComponent implements OnInit {
   private categoryService: CategoryService;
-  private categories$: Observable<Category[]>;
+  private categories$: Observable<CategoryDto[]>;
 
   constructor(categoryService: CategoryService) {
     this.categoryService = categoryService;

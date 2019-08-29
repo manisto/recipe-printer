@@ -1,7 +1,7 @@
 import { CategoryService } from "../shared/category.service";
-import { Category } from "../shared/category.model";
+import { CategoryDto } from "../shared/category-dto.model";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { switchMap, map } from "rxjs/operators";
 import { Observable } from "rxjs";
 
@@ -13,11 +13,13 @@ import { Observable } from "rxjs";
 export class CategoryContainerComponent implements OnInit {
   private route: ActivatedRoute;
   private categoryService: CategoryService;
-  private category$: Observable<Category>;
+  private router: Router;
+  private category$: Observable<CategoryDto>;
 
-  constructor(route: ActivatedRoute, categoryService: CategoryService) {
+  constructor(route: ActivatedRoute, categoryService: CategoryService, router: Router) {
     this.route = route;
     this.categoryService = categoryService;
+    this.router = router;
   }
 
   ngOnInit() {
@@ -28,5 +30,9 @@ export class CategoryContainerComponent implements OnInit {
           id ? this.categoryService.get(id) : this.categoryService.prototype()
         )
       );
+  }
+
+  private backToList(): void {
+    this.router.navigateByUrl("/categories");
   }
 }

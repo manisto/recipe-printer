@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Category } from "./category.model";
+import { CategoryDto } from "./category-dto.model";
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -14,15 +14,15 @@ export class CategoryService {
     this.http = http;
   }
 
-  listCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.BASE_URL);
+  listCategories(): Observable<CategoryDto[]> {
+    return this.http.get<CategoryDto[]>(this.BASE_URL);
   }
 
-  get(id): Observable<Category> {
-    return this.http.get<Category>(`${this.BASE_URL}/${id}`);
+  get(id): Observable<CategoryDto> {
+    return this.http.get<CategoryDto>(`${this.BASE_URL}/${id}`);
   }
 
-  prototype(): Observable<Category> {
-    return this.http.get<Category>(`${this.BASE_URL}/prototype`);
+  prototype(): Observable<CategoryDto> {
+    return this.http.get<CategoryDto>(`${this.BASE_URL}/prototype`);
   }
 }
