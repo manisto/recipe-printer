@@ -23,6 +23,13 @@ namespace Recipes.Application.Queries
             _recipeMapper = recipeMapper;
         }
 
+        public async Task<CategoryDto> GetCategoryAsync(int categoryId)
+        {
+            Category category = await _recipeRepository.GetCategoryAsync(categoryId);
+            CategoryDto categoryDto = _recipeMapper.MapCategory(category);
+            return categoryDto;
+        }
+
         public async Task<IEnumerable<CategoryDto>> ListCategoriesAsync()
         {
             IEnumerable<Category> categories = await _recipeRepository.ListCategoriesAsync();

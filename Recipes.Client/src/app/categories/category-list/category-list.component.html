@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table table-hover table-sm">
     <thead>
         <tr>
             <th>Id</th>
@@ -9,6 +9,11 @@
         <tr *ngFor="let category of categories$ | async">
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
+        </tr>
+        <tr>
+            <td colspan="20" class="text-right">
+                <a routerLink="/categories/new" class="btn btn-sm btn-primary">Add</a>
+            </td>
         </tr>
     </tbody>
 </table>

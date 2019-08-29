@@ -7,6 +7,11 @@ namespace Recipes.Application.Mappers
     {
         public CategoryDto MapCategory(Category category)
         {
+            if (category == null)
+            {
+                return null;
+            }
+
             return new CategoryDto
             {
                 Id = category.Id,
@@ -16,6 +21,11 @@ namespace Recipes.Application.Mappers
         
         public RecipeDto MapRecipe(Recipe recipe)
         {
+            if (recipe == null)
+            {
+                return null;
+            }
+            
             return new RecipeDto
             {
                 Id = recipe.Id,

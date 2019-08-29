@@ -6,6 +6,7 @@ namespace Recipes.Domain.Repositories
 {
     public interface IRecipeRepository
     {
+        Task<Category> GetCategoryAsync(int categoryId);
         Task<IEnumerable<Category>> ListCategoriesAsync();
         Task<Recipe> GetRecipeAsync(int recipeId);
     }

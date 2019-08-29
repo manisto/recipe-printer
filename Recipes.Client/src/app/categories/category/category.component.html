@@ -1,2 +1,9 @@
-<p>category works!</p>
-And the id is {{ id | async }}
+<div *ngIf="category$ | async">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" formControlName="name" required />
+        </div>
+    </form>
+    <button type="button" class="btn btn-primary btn-sm" (click)="save();">Save</button>
+</div>

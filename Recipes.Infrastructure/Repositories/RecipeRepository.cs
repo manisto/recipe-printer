@@ -18,6 +18,11 @@ namespace Recipes.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<Category> GetCategoryAsync(int categoryId)
+        {
+            return await _context.Categories.FindAsync(categoryId);
+        }
+
         public async Task<IEnumerable<Category>> ListCategoriesAsync()
         {
             return await _context.Categories.ToListAsync();

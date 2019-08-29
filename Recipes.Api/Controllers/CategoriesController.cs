@@ -21,9 +21,21 @@ namespace Recipes.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<CategoryDto>> Get()
+        public async Task<IEnumerable<CategoryDto>> List()
         {
             return await _recipeQueries.ListCategoriesAsync();
+        }
+
+        [HttpGet("prototype")]
+        public ActionResult<CategoryDto> Prototype()
+        {
+            return new CategoryDto();
+        }
+
+        [HttpGet("{categoryId}")]
+        public async Task<ActionResult<CategoryDto>> Get(int categoryId)
+        {
+            return await _recipeQueries.GetCategoryAsync(categoryId);
         }
     }
 }
