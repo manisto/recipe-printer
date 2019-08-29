@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { CategoryComponent } from './category/category.component';
+import { CategoryContainerComponent } from './category-container/category-container.component';
 
 
 const routes: Routes = [
@@ -14,11 +14,11 @@ const routes: Routes = [
       },
       {
         path: "new",
-        component: CategoryComponent
+        component: CategoryContainerComponent
       },
       {
         path: "edit/:id",
-        component: CategoryComponent
+        component: CategoryContainerComponent
       }
     ]
   }
