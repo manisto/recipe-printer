@@ -8,27 +8,27 @@ namespace Recipes.Application.Commands
 {
     public class SaveCategoryCommandHandler : ISaveCategoryCommandHandler
     {
-        private readonly IRecipeRepository _recipeRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
         public SaveCategoryCommandHandler
         (
-            IRecipeRepository recipeRepository
+            ICategoryRepository categoryRepository
         )
         {
-            this._recipeRepository = recipeRepository;
+            this._categoryRepository = categoryRepository;
         }
 
         public async Task HandleAsync(SaveCategoryCommand command)
         {
-            Category category = await _recipeRepository.GetCategoryAsync(command.Id);
+            Category category = await _categoryRepository.GetCategoryAsync(command.Id);
 
             if (category == null) {
                 category = new Category(command.Name);
-                _recipeRepository.AddCategory(category);
+                _categoryRepository.AddCategory(category);
             }
 
             category.Name = command.Name;
-            await _recipeRepository.SaveChangesAsync();
+            await _categoryRepository.UnitOfWork.SaveChangesAsync();
         }
     }
 }

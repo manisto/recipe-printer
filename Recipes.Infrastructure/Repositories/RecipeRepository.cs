@@ -10,27 +10,14 @@ namespace Recipes.Infrastructure.Repositories
     {
         private readonly RecipesDbContext _context;
 
+        public IUnitOfWork UnitOfWork => _context;
+
         public RecipeRepository
         (
             RecipesDbContext context
         )
         {
             _context = context;
-        }
-
-        public async Task<Category> GetCategoryAsync(int categoryId)
-        {
-            return await _context.Categories.FindAsync(categoryId);
-        }
-
-        public async Task<IEnumerable<Category>> ListCategoriesAsync()
-        {
-            return await _context.Categories.ToListAsync();
-        }
-
-        public void AddCategory(Category category)
-        {
-            _context.Categories.Add(category);
         }
 
         public async Task<Recipe> GetRecipeAsync(int recipeId)

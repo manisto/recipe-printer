@@ -1,10 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Recipes.Domain.Models;
+using Recipes.Domain.Repositories;
 using Recipes.Infrastructure.EntityConfigurations;
 
 namespace Recipes.Infrastructure
 {
-    public class RecipesDbContext : DbContext
+    public class RecipesDbContext : DbContext, IUnitOfWork
     {
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Category> Categories { get; set; }

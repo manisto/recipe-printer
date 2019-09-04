@@ -4,12 +4,8 @@ using System.Threading.Tasks;
 
 namespace Recipes.Domain.Repositories
 {
-    public interface IRecipeRepository
+    public interface IRecipeRepository : IRepository
     {
-        Task<Category> GetCategoryAsync(int categoryId);
-        Task<IEnumerable<Category>> ListCategoriesAsync();
-
-        void AddCategory(Category category);
         Task<Recipe> GetRecipeAsync(int recipeId);
 
         Task SaveChangesAsync();

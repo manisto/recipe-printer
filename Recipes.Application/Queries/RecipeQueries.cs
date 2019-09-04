@@ -10,29 +10,32 @@ namespace Recipes.Application.Queries
 {
     public class RecipeQueries : IRecipeQueries
     {
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IRecipeRepository _recipeRepository;
         private readonly IRecipeMapper _recipeMapper;
 
         public RecipeQueries
         (
+            ICategoryRepository categoryRepository,
             IRecipeRepository recipeRepository,
             IRecipeMapper recipeMapper
         )
         {
+            _categoryRepository = categoryRepository;
             _recipeRepository = recipeRepository;
             _recipeMapper = recipeMapper;
         }
 
         public async Task<CategoryDto> GetCategoryAsync(int categoryId)
         {
-            Category category = await _recipeRepository.GetCategoryAsync(categoryId);
+            Category category = await _categoryRepository.GetCategoryAsync(categoryId);
             CategoryDto categoryDto = _recipeMapper.MapCategory(category);
             return categoryDto;
         }
 
         public async Task<IEnumerable<CategoryDto>> ListCategoriesAsync()
         {
-            IEnumerable<Category> categories = await _recipeRepository.ListCategoriesAsync();
+            IEnumerable<Category> categories = await _categoryRepository.ListCategoriesAsync();
             IEnumerable<CategoryDto> CategoryDtos = categories.Select(category => _recipeMapper.MapCategory(category));
             return CategoryDtos;
         }

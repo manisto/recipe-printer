@@ -37,6 +37,7 @@ namespace Recipes.Api
             services.AddScoped<IRecipeQueries, RecipeQueries>();
             services.AddScoped<IRecipeMapper, RecipeMapper>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ISaveCategoryCommandHandler, SaveCategoryCommandHandler>();
 
             services.AddSpaStaticFiles(configuration =>
