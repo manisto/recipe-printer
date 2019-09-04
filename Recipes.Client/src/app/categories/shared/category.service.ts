@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CategoryDto } from "./category-dto.model";
 import { Observable } from "rxjs";
+import { SaveCategoryCommand } from './save-category-command.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class CategoryService {
 
   get(id): Observable<CategoryDto> {
     return this.http.get<CategoryDto>(`${this.BASE_URL}/${id}`);
+  }
+
+  saveCategory(command: SaveCategoryCommand): Observable<CategoryDto> {
+    return this.http.post<CategoryDto>(`${this.BASE_URL}`, command);
   }
 
   prototype(): Observable<CategoryDto> {

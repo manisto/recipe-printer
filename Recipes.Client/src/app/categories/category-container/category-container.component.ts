@@ -35,4 +35,10 @@ export class CategoryContainerComponent implements OnInit {
   private backToList(): void {
     this.router.navigateByUrl("/categories");
   }
+
+  private save(dto: CategoryDto): void {
+    this.categoryService
+      .saveCategory(dto)
+      .subscribe(() => this.router.navigateByUrl("/categories"));
+  }
 }

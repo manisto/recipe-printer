@@ -28,9 +28,19 @@ namespace Recipes.Infrastructure.Repositories
             return await _context.Categories.ToListAsync();
         }
 
+        public void AddCategory(Category category)
+        {
+            _context.Categories.Add(category);
+        }
+
         public async Task<Recipe> GetRecipeAsync(int recipeId)
         {
             return await _context.Recipes.FindAsync(recipeId);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

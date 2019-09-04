@@ -14,6 +14,7 @@ using Recipes.Application.Queries;
 using Recipes.Application.Mappers;
 using Recipes.Domain.Repositories;
 using Recipes.Infrastructure.Repositories;
+using Recipes.Application.Commands;
 using Recipes.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,7 @@ namespace Recipes.Api
             services.AddScoped<IRecipeQueries, RecipeQueries>();
             services.AddScoped<IRecipeMapper, RecipeMapper>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<ISaveCategoryCommandHandler, SaveCategoryCommandHandler>();
 
             services.AddSpaStaticFiles(configuration =>
             {

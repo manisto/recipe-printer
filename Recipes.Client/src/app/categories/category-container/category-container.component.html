@@ -1,1 +1,1 @@
-<app-category [category]="category$ | async" (canceled)="backToList();"></app-category>
+<app-category [category]="category$ | async" (canceled)="backToList();" (saved)="save($event);"></app-category>

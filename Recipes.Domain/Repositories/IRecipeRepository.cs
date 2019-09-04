@@ -8,6 +8,10 @@ namespace Recipes.Domain.Repositories
     {
         Task<Category> GetCategoryAsync(int categoryId);
         Task<IEnumerable<Category>> ListCategoriesAsync();
+
+        void AddCategory(Category category);
         Task<Recipe> GetRecipeAsync(int recipeId);
+
+        Task SaveChangesAsync();
     }
 }
