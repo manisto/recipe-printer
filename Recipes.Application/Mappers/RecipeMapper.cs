@@ -30,6 +30,8 @@ namespace Recipes.Application.Mappers
             {
                 Id = recipe.Id,
                 Name = recipe.Name,
+                Ingredients = recipe.Ingredients,
+                Preparation = recipe.Preparation,
             };
         }
     }

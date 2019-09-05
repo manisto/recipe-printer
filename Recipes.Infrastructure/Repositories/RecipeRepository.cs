@@ -25,9 +25,14 @@ namespace Recipes.Infrastructure.Repositories
             return await _context.Recipes.FindAsync(recipeId);
         }
 
-        public async Task SaveChangesAsync()
+        public async Task<IEnumerable<Recipe>> ListRecipesAsync()
         {
-            await _context.SaveChangesAsync();
+            return await _context.Recipes.ToListAsync();
+        }
+
+        public void AddRecipe(Recipe recipe)
+        {
+            _context.Recipes.Add(recipe);
         }
     }
 }

@@ -23,8 +23,8 @@ export class CategoryService {
     return this.http.get<CategoryDto>(`${this.BASE_URL}/${id}`);
   }
 
-  saveCategory(command: SaveCategoryCommand): Observable<CategoryDto> {
-    return this.http.post<CategoryDto>(`${this.BASE_URL}`, command);
+  saveCategory(command: SaveCategoryCommand): Observable<void> {
+    return this.http.post<void>(`${this.BASE_URL}`, command);
   }
 
   prototype(): Observable<CategoryDto> {

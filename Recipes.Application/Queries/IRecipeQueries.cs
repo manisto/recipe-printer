@@ -7,6 +7,7 @@ namespace Recipes.Application.Queries
     public interface IRecipeQueries
     {
         Task<IEnumerable<CategoryDto>> ListCategoriesAsync();
+        Task<IEnumerable<RecipeDto>> ListRecipesAsync();
         Task<CategoryDto> GetCategoryAsync(int categoryId);
         Task<RecipeDto> GetRecipeAsync(int recipeId);
     }

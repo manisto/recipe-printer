@@ -7,7 +7,8 @@ namespace Recipes.Domain.Repositories
     public interface IRecipeRepository : IRepository
     {
         Task<Recipe> GetRecipeAsync(int recipeId);
+        Task<IEnumerable<Recipe>> ListRecipesAsync();
 
-        Task SaveChangesAsync();
+        void AddRecipe(Recipe recipe);
     }
 }

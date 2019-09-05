@@ -1,0 +1,23 @@
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let recipe of recipes$ | async">
+            <td>{{ recipe.id }}</td>
+            <td>{{ recipe.name }}</td>
+            <td class="text-right">
+                <a [routerLink]="['/recipes/edit', recipe.id]" class="btn btn-primary btn-sm">Edit</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="20" class="text-right">
+                <a routerLink="/recipes/new" class="btn btn-sm btn-primary">Add</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

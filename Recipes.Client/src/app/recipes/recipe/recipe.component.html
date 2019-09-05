@@ -1,0 +1,21 @@
+<div *ngIf="form">
+    <form [formGroup]="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" formControlName="name" required id="name" />
+        </div>
+        <div class="form-group">
+            <label>Categories</label>
+        </div>
+        <div class="form-group">
+            <label for="ingredients">Ingredients</label>
+            <textarea rows="6" class="form-control" formControlName="ingredients" id="ingredients"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="preparation">Preparation</label>
+            <textarea rows="6" class="form-control" formControlName="preparation" id="preparation"></textarea>
+        </div>
+    </form>
+    <button type="button" class="btn btn-secondary btn-sm mr-1" (click)="cancel();">Cancel</button>
+    <button type="button" class="btn btn-primary btn-sm" (click)="save();">Save</button>
+</div>
