@@ -7,10 +7,12 @@ import { RecipeContainerComponent } from './recipe-container/recipe-container.co
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [RecipeComponent, RecipeContainerComponent, RecipeListComponent],
   imports: [
+    MarkdownModule.forChild(),
     CommonModule,
     NgSelectModule,
     ReactiveFormsModule,
