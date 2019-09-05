@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { RecipeDto } from '../shared/recipe-dto.model';
+import { CategoryDto } from 'src/app/categories/shared/category-dto.model';
 
 @Component({
   selector: 'app-recipe',
@@ -11,6 +12,8 @@ export class RecipeComponent implements OnInit {
   private fb: FormBuilder;
   private form: FormGroup;
 
+  @Input() categories: CategoryDto[];
+
   @Input()
   set recipe(recipe: RecipeDto) {
     if (!recipe) {
@@ -20,6 +23,7 @@ export class RecipeComponent implements OnInit {
     this.form = this.fb.group({
       id: [recipe.id],
       name: [recipe.name],
+      categories: [[...recipe.categories]],
       ingredients: [recipe.ingredients],
       preparation: [recipe.preparation]
     });
@@ -40,7 +44,8 @@ export class RecipeComponent implements OnInit {
   }
 
   save(): void {
-    throw new Error("not implemented");
+    let returnValue: RecipeDto = Object.assign({}, this.form.value);
+    this.saved.emit(returnValue);
   }
 
 }

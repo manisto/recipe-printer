@@ -25,7 +25,7 @@ namespace Recipes.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<RecipeDto>> List()
+        public async Task<IEnumerable<RecipeListDto>> List()
         {
             return await _recipeQueries.ListRecipesAsync();
         }

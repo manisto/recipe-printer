@@ -26,6 +26,7 @@ namespace Recipes.Application.Commands.SaveRecipe
             if (recipe == null)
             {
                 recipe = new Recipe();
+                _recipeRepository.AddRecipe(recipe);
             }
 
             recipe.Name = command.Name;
@@ -39,6 +40,8 @@ namespace Recipes.Application.Commands.SaveRecipe
                 Category category = await _categoryRepository.GetCategoryAsync(categoryId);
                 recipe.RecipeCategories.Add(new RecipeCategory(recipe, category));
             }
+
+            await _recipeRepository.UnitOfWork.SaveChangesAsync();
         }
     }
 }

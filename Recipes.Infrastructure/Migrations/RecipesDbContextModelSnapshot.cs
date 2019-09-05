@@ -49,9 +49,11 @@ namespace Recipes.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int?>("CategoryId")
+                        .IsRequired();
 
-                    b.Property<int?>("RecipeId");
+                    b.Property<int?>("RecipeId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -67,11 +69,13 @@ namespace Recipes.Infrastructure.Migrations
                 {
                     b.HasOne("Recipes.Domain.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Recipes.Domain.Models.Recipe", "Recipe")
                         .WithMany("RecipeCategories")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

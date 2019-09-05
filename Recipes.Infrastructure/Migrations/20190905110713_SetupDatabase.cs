@@ -2,7 +2,7 @@
 
 namespace Recipes.Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class SetupDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,9 @@ namespace Recipes.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    Preparation = table.Column<string>(nullable: true),
+                    Ingredients = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -38,8 +40,8 @@ namespace Recipes.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    RecipeId = table.Column<int>(nullable: true),
-                    CategoryId = table.Column<int>(nullable: true)
+                    RecipeId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,13 +51,13 @@ namespace Recipes.Infrastructure.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_RecipeCategories_Recipes_RecipeId",
                         column: x => x.RecipeId,
                         principalTable: "Recipes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

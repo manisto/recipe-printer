@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { RecipeDto } from '../shared/recipe-dto.model';
 import { switchMap, map } from 'rxjs/operators';
 import { SaveRecipeCommand } from '../shared/save-recipe-command.model';
+import { CategoryService } from 'src/app/categories/shared/category.service';
+import { CategoryDto } from 'src/app/categories/shared/category-dto.model';
 
 @Component({
   selector: 'app-recipe-container',
@@ -14,17 +16,21 @@ import { SaveRecipeCommand } from '../shared/save-recipe-command.model';
 export class RecipeContainerComponent implements OnInit {
   private route: ActivatedRoute;
   private recipeService: RecipeService;
+  private categoryService: CategoryService;
   private router: Router;
   private recipe$: Observable<RecipeDto>;
+  private categories$: Observable<CategoryDto[]>;
 
   constructor(
     route: ActivatedRoute,
     recipeService: RecipeService,
-    router: Router
+    router: Router,
+    categoryService: CategoryService
   ) {
     this.route = route;
     this.recipeService = recipeService;
     this.router = router;
+    this.categoryService = categoryService;
   }
 
   ngOnInit() {
@@ -35,6 +41,8 @@ export class RecipeContainerComponent implements OnInit {
           recipeId ? this.recipeService.get(recipeId) : this.recipeService.prototype()
         )
       );
+    
+    this.categories$ = this.categoryService.listCategories();
   }
 
   private backToList(): void {
@@ -45,9 +53,9 @@ export class RecipeContainerComponent implements OnInit {
     let command: SaveRecipeCommand = {
       id: dto.id,
       name: dto.name,
+      categories: dto.categories.map(c => c.id),
       ingredients: dto.ingredients,
-      preparation: dto.preparation,
-      categories: null
+      preparation: dto.preparation
     };
 
     this.recipeService

@@ -1,5 +1,6 @@
 using Recipes.Application.Dtos;
 using Recipes.Domain.Models;
+using System.Linq;
 
 namespace Recipes.Application.Mappers
 {
@@ -30,8 +31,23 @@ namespace Recipes.Application.Mappers
             {
                 Id = recipe.Id,
                 Name = recipe.Name,
+                Categories = recipe.RecipeCategories.Select(rc => MapCategory(rc.Category)),
                 Ingredients = recipe.Ingredients,
                 Preparation = recipe.Preparation,
+            };
+        }
+
+        public RecipeListDto MapRecipeForList(Recipe recipe)
+        {
+            if (recipe == null)
+            {
+                return null;
+            }
+
+            return new RecipeListDto
+            {
+                Id = recipe.Id,
+                Name = recipe.Name
             };
         }
     }

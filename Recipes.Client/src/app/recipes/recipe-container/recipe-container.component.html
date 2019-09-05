@@ -1,1 +1,5 @@
-<app-recipe [recipe]="recipe$ | async" (canceled)="backToList();" (saved)="save($event);"></app-recipe>
+<app-recipe
+    [recipe]="recipe$ | async"
+    [categories]="categories$ | async"
+    (canceled)="backToList();"
+    (saved)="save($event);"></app-recipe>

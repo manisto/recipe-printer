@@ -22,7 +22,10 @@ namespace Recipes.Infrastructure.Repositories
 
         public async Task<Recipe> GetRecipeAsync(int recipeId)
         {
-            return await _context.Recipes.FindAsync(recipeId);
+            return await _context.Recipes
+                .Include(r => r.RecipeCategories)
+                .ThenInclude(rc => rc.Category)
+                .FirstOrDefaultAsync(r => r.Id == recipeId);
         }
 
         public async Task<IEnumerable<Recipe>> ListRecipesAsync()

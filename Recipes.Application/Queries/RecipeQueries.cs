@@ -47,10 +47,10 @@ namespace Recipes.Application.Queries
             return recipeDto;
         }
 
-        public async Task<IEnumerable<RecipeDto>> ListRecipesAsync()
+        public async Task<IEnumerable<RecipeListDto>> ListRecipesAsync()
         {
             IEnumerable<Recipe> recipes = await _recipeRepository.ListRecipesAsync();
-            IEnumerable<RecipeDto> recipeDtos = recipes.Select(recipe => _recipeMapper.MapRecipe(recipe));
+            IEnumerable<RecipeListDto> recipeDtos = recipes.Select(recipe => _recipeMapper.MapRecipeForList(recipe));
             return recipeDtos;
         }
     }

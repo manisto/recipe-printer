@@ -7,5 +7,7 @@ namespace Recipes.Application.Mappers
     {
         CategoryDto MapCategory(Category category);
         RecipeDto MapRecipe(Recipe recipe);
+
+        RecipeListDto MapRecipeForList(Recipe recipe);
     }
 }

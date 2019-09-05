@@ -9,6 +9,6 @@ namespace Recipes.Domain.Models
         public string Preparation { get; set; }
         public string Ingredients { get; set; }
 
-        public ICollection<RecipeCategory> RecipeCategories { get; private set; }
+        public ICollection<RecipeCategory> RecipeCategories { get; private set; } = new List<RecipeCategory>();
     }
 }

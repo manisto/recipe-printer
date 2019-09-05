@@ -14,11 +14,13 @@ namespace Recipes.Infrastructure.EntityConfigurations
 
             builder
                 .HasOne(rc => rc.Recipe)
-                .WithMany(r => r.RecipeCategories);
+                .WithMany(r => r.RecipeCategories)
+                .IsRequired();
 
             builder
                 .HasOne(rc => rc.Category)
-                .WithMany();
+                .WithMany()
+                .IsRequired();
         }
     }
 }
