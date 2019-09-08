@@ -11,7 +11,8 @@
             <td>{{ recipe.id }}</td>
             <td>{{ recipe.name }}</td>
             <td class="text-right">
-                <a [routerLink]="['/recipes/edit', recipe.id]" class="btn btn-primary btn-sm">Edit</a>
+                <a [routerLink]="['/recipes', recipe.id, 'print']" class="btn btn-secondary btn-sm">Print</a>
+                <a [routerLink]="['/recipes', recipe.id, 'edit']" class="btn btn-primary btn-sm">Edit</a>
             </td>
         </tr>
         <tr>

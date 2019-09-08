@@ -18,12 +18,17 @@ const routes: Routes = [
         component: RecipeContainerComponent
       },
       {
-        path: "edit/:recipeId",
-        component: RecipeContainerComponent
-      },
-      {
-        path: "print/:recipeId",
-        component: PrintRecipeContainerComponent
+        path: ":recipeId",
+        children: [
+          {
+            path: "edit",
+            component: RecipeContainerComponent
+          },
+          {
+            path: "print",
+            component: PrintRecipeContainerComponent
+          }
+        ]
       }
     ]
   }

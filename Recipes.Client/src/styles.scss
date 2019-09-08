@@ -9,11 +9,30 @@
     body {
         padding-left: var(--nav-width);
     }
+
+    app-print-recipe + app-print-recipe {
+        display: none;
+    }
 }
 
 @media print {
     @page {
-        size: A4 landscape;
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    app-print-recipe-container {
+        display: block;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    app-print-recipe {
+        display: block;
+        height: 50vh;
+        width: 100vw;
+        padding: 1cm;
+        font-family: serif;
     }
 }
 
@@ -24,8 +43,4 @@ nav {
     width: var(--nav-width);
     position: absolute;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-}
-
-app-print-recipe {
-    page-break-after: always;
 }
