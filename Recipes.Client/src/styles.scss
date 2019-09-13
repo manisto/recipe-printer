@@ -21,6 +21,10 @@
         margin: 0;
     }
 
+    app-root {
+        display: block;
+    }
+
     app-print-recipe-container {
         display: block;
         margin-left: -15px;
@@ -33,6 +37,13 @@
         width: 100vw;
         padding: 1cm;
         font-family: serif;
+        font-size: 8pt;
+    }
+
+    .recipe-border {
+        border: 1pt solid black;
+        height: 100%;
+        padding: 5mm;
     }
 }
 
