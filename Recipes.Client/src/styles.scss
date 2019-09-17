@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+$enable-print-styles: false;
+
 @import "bootstrap/scss/bootstrap.scss";
 @import "@ng-select/ng-select/themes/default.theme.css";
 
