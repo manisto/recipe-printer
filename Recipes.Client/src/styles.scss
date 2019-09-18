@@ -8,6 +8,7 @@ $enable-print-styles: false;
 :root {
     --nav-width: 300px;
 }
+
 @media screen {
     body {
         padding-left: var(--nav-width);
@@ -30,8 +31,10 @@ $enable-print-styles: false;
 
     app-print-recipe-container {
         display: block;
-        margin-left: -15px;
-        margin-right: -15px;
+    }
+
+    markdown {
+        display: block;
     }
 
     app-print-recipe {
@@ -41,12 +44,50 @@ $enable-print-styles: false;
         padding: 1cm;
         font-family: serif;
         font-size: 8pt;
+        line-height: 1.3em;
     }
 
     .recipe-border {
         border: 1pt solid black;
         height: 100%;
         padding: 5mm;
+    }
+
+    h1 {
+        font-size: 12pt;
+        font-weight: bold;
+        margin-bottom: 6pt;
+    }
+    
+    h2 {
+        font-size: 10pt;
+        font-weight: bold;
+        margin-bottom: 5pt;
+    }
+
+    h3 {
+        font-size: 8pt;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row {
+        margin-left: -2mm;
+        margin-right: -2mm;
+    }
+
+    .col {
+        padding-left: 2mm;
+        padding-right: 2mm;
+    }
+
+    ol, ul {
+        padding-inline-start: 5mm;
     }
 }
 
