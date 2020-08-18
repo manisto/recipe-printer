@@ -18,8 +18,8 @@ export class RecipeContainerComponent implements OnInit {
   private recipeService: RecipeService;
   private categoryService: CategoryService;
   private router: Router;
-  private recipe$: Observable<RecipeDto>;
-  private categories$: Observable<CategoryDto[]>;
+  public recipe$: Observable<RecipeDto>;
+  public categories$: Observable<CategoryDto[]>;
 
   constructor(
     route: ActivatedRoute,
@@ -45,11 +45,11 @@ export class RecipeContainerComponent implements OnInit {
     this.categories$ = this.categoryService.listCategories();
   }
 
-  private backToList(): void {
+  public backToList(): void {
     this.router.navigateByUrl("/recipes");
   }
 
-  private save(dto: RecipeDto): void {
+  public save(dto: RecipeDto): void {
     let command: SaveRecipeCommand = {
       id: dto.id,
       name: dto.name,

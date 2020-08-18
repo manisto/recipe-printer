@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CategoryComponent implements OnInit {
   private fb: FormBuilder;
-  private form: FormGroup;
+  public form: FormGroup;
 
   @Input()
   set category(category: CategoryDto) {

@@ -12,7 +12,7 @@ import { map, switchMap } from "rxjs/operators";
 })
 export class PrintRecipeContainerComponent implements OnInit {
   private recipeService: RecipeService;
-  private recipe$: Observable<RecipeDto>;
+  public recipe$: Observable<RecipeDto>;
   private route: ActivatedRoute;
 
   constructor(recipeService: RecipeService, route: ActivatedRoute) {

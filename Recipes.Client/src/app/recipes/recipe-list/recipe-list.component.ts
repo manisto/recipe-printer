@@ -10,7 +10,7 @@ import { RecipeDto } from '../shared/recipe-dto.model';
 })
 export class RecipeListComponent implements OnInit {
   private recipeService: RecipeService;
-  private recipes$: Observable<RecipeDto[]>;
+  public recipes$: Observable<RecipeDto[]>;
 
   constructor(recipeService: RecipeService) {
     this.recipeService = recipeService;

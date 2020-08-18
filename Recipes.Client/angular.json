@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "recipes-client"
+    }
+  },
+  "defaultProject": "recipes-client",
+  "cli": {
+    "analytics": false
+  }
 }

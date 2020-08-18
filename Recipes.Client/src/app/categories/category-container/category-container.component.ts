@@ -14,7 +14,7 @@ export class CategoryContainerComponent implements OnInit {
   private route: ActivatedRoute;
   private categoryService: CategoryService;
   private router: Router;
-  private category$: Observable<CategoryDto>;
+  public category$: Observable<CategoryDto>;
 
   constructor(route: ActivatedRoute, categoryService: CategoryService, router: Router) {
     this.route = route;
@@ -32,11 +32,11 @@ export class CategoryContainerComponent implements OnInit {
       );
   }
 
-  private backToList(): void {
+  public backToList(): void {
     this.router.navigateByUrl("/categories");
   }
 
-  private save(dto: CategoryDto): void {
+  public save(dto: CategoryDto): void {
     this.categoryService
       .saveCategory(dto)
       .subscribe(() => this.router.navigateByUrl("/categories"));

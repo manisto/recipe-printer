@@ -10,7 +10,7 @@ import { CategoryDto } from 'src/app/categories/shared/category-dto.model';
 })
 export class RecipeComponent implements OnInit {
   private fb: FormBuilder;
-  private form: FormGroup;
+  public form: FormGroup;
 
   @Input() categories: CategoryDto[];
 
