@@ -36,7 +36,7 @@ namespace Recipes.Api
 
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "../Recipes.Client/dist";
+                configuration.RootPath = "client";
             });
         }
 
