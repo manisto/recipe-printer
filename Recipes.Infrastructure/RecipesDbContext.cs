@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Recipes.Domain.Models;
 using Recipes.Domain.Repositories;
 using Recipes.Infrastructure.EntityConfigurations;
+using System.IO;
 
 namespace Recipes.Infrastructure
 {
@@ -13,7 +14,9 @@ namespace Recipes.Infrastructure
 
         override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=Recipes.sqlite");
+            Directory.CreateDirectory("data");
+            string path = Path.Combine(".", "data", "Recipes.sqlite");
+            optionsBuilder.UseSqlite($"Data Source={path}");
         }
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)
