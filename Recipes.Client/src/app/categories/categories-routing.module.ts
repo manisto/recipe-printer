@@ -5,23 +5,20 @@ import { CategoryContainerComponent } from './category-container/category-contai
 
 
 const routes: Routes = [
+
   {
-    path: "categories",
-    children: [
-      {
-        path: "",
-        component: CategoryListComponent
-      },
-      {
-        path: "new",
-        component: CategoryContainerComponent
-      },
-      {
-        path: "edit/:id",
-        component: CategoryContainerComponent
-      }
-    ]
+    path: "",
+    component: CategoryListComponent
+  },
+  {
+    path: "new",
+    component: CategoryContainerComponent
+  },
+  {
+    path: "edit/:id",
+    component: CategoryContainerComponent
   }
+
 ];
 
 @NgModule({

@@ -7,28 +7,23 @@ import { PrintRecipeContainerComponent } from './print-recipe-container/print-re
 
 const routes: Routes = [
   {
-    path: "recipes",
+    path: "",
+    component: RecipeListComponent
+  },
+  {
+    path: "new",
+    component: RecipeContainerComponent
+  },
+  {
+    path: ":recipeId",
     children: [
       {
-        path: "",
-        component: RecipeListComponent
-      },
-      {
-        path: "new",
+        path: "edit",
         component: RecipeContainerComponent
       },
       {
-        path: ":recipeId",
-        children: [
-          {
-            path: "edit",
-            component: RecipeContainerComponent
-          },
-          {
-            path: "print",
-            component: PrintRecipeContainerComponent
-          }
-        ]
+        path: "print",
+        component: PrintRecipeContainerComponent
       }
     ]
   }
