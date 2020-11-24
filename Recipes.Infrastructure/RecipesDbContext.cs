@@ -4,6 +4,7 @@ using Recipes.Domain.Repositories;
 using Recipes.Infrastructure.EntityConfigurations;
 using System.IO;
 using FileContextCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Recipes.Infrastructure
 {
@@ -13,6 +14,13 @@ namespace Recipes.Infrastructure
         public DbSet<Category> Categories { get; set; }
         public DbSet<RecipeCategory> RecipeCategories { get; set; }
 
+        private readonly string _path;
+
+        public RecipesDbContext(IConfiguration configuration)
+        {
+            _path = configuration.GetValue("DataPath", "./data");
+        }
+
         override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             ConfigureFile(optionsBuilder);
@@ -20,15 +28,13 @@ namespace Recipes.Infrastructure
 
         private void ConfigureFile(DbContextOptionsBuilder optionsBuilder)
         {
-            string path = Path.Combine(".", "data");
-            optionsBuilder.UseFileContextDatabase(location: path);
+            optionsBuilder.UseFileContextDatabase(location: _path);
         }
 
         private void ConfigureSqlite(DbContextOptionsBuilder optionsBuilder)
         {
-            Directory.CreateDirectory("data");
-            string path = Path.Combine(".", "data", "Recipes.sqlite");
-            optionsBuilder.UseSqlite($"Data Source={path}");
+            Directory.CreateDirectory(_path);
+            optionsBuilder.UseSqlite($"Data Source={_path}");
         }
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)

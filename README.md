@@ -1,4 +1,13 @@
 # Recipe-printer
+## Settings
+Unless otherwise specified, the application will store data in the `Recipes.Api/data` folder.
+You can change this by specifying the environment variable "DataPath".
+Please note that the specified path must be absolute, as in the following example.
+
+```
+dotnet run --project Recipes.Api --DataPath=c:\recipe-data
+```
+
 ## Running the project
 ### Locally
 In the root project folder, run the following commands:

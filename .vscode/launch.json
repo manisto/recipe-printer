@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Recipes.Api/bin/Debug/netcoreapp2.2/Recipes.Api.dll",
+            "program": "${workspaceFolder}/Recipes.Api/bin/Debug/net5.0/Recipes.Api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Recipes.Api",
             "stopAtEntry": false,
