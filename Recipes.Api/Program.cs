@@ -15,7 +15,9 @@ namespace Recipes.Api
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Migrate<RecipesDbContext>().Run();
+            IWebHost webHost = CreateWebHostBuilder(args).Build();
+            // webHost.Migrate<RecipesDbContext>();
+            webHost.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
