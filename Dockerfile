@@ -8,7 +8,7 @@ RUN npm ci
 COPY ./Recipes.Client/ ./
 RUN npm run build
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS api
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS api
 
 WORKDIR /build
 
@@ -24,7 +24,7 @@ COPY ./Recipes.Domain/ ./Recipes.Domain/
 COPY ./Recipes.Infrastructure/ ./Recipes.Infrastructure/
 RUN dotnet publish Recipes.Api -o out
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+FROM mcr.microsoft.com/dotnet/aspnet:5.0
 EXPOSE 80
 WORKDIR /server
 COPY --from=api /build/out/ ./
