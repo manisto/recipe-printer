@@ -8,6 +8,7 @@ namespace Recipes.Domain.Models
         public string Name { get; set; }
         public string Preparation { get; set; }
         public string Ingredients { get; set; }
+        public bool Deleted { get; set; }
 
         public ICollection<RecipeCategory> RecipeCategories { get; private set; } = new List<RecipeCategory>();
     }

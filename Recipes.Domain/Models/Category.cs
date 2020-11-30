@@ -4,6 +4,7 @@ namespace Recipes.Domain.Models
     {
         public int Id { get; private set; }
         public string Name { get; set; }
+        public bool Deleted { get; set; }
 
         #region EF Core
         
